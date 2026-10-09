@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>CFBundleName</key><string>InkDesk</string>
+  <key>CFBundleDisplayName</key><string>InkDesk</string>
+  <key>CFBundleExecutable</key><string>InkDesk</string>
+  <key>CFBundleIdentifier</key><string>fan.api.InkDesk</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>1.2.0</string>
+  <key>CFBundleVersion</key><string>5</string>
+  <key>LSMinimumSystemVersion</key><string>14.0</string>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>CFBundleIconFile</key><string>AppIcon-ImageGen</string>
+  <key>NSLocalNetworkUsageDescription</key><string>InkDesk 通过本地网络向你的 E1001 同步墨水屏画面并接收按键操作。</string>
+  <key>NSAppTransportSecurity</key><dict><key>NSAllowsLocalNetworking</key><true/></dict>
+</dict></plist>

@@ -1,0 +1,54 @@
+// !$*UTF8*$!
+{
+ archiveVersion = 1;
+ classes = {};
+ objectVersion = 56;
+ objects = {
+ D5D03779A09D6291EF47B44D = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MenuBarView.swift"; path = "Sources/InkDesk/MenuBarView.swift"; sourceTree = "<group>"; };
+ C6C667B348B2F5688E32B6D4 = {isa = PBXBuildFile; fileRef = D5D03779A09D6291EF47B44D; };
+ 5C15E6AEA0777D94B3438B47 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FrameSyncQueue.swift"; path = "Sources/InkDesk/FrameSyncQueue.swift"; sourceTree = "<group>"; };
+ 06E6DA28868FD54563774088 = {isa = PBXBuildFile; fileRef = 5C15E6AEA0777D94B3438B47; };
+ F8995BA5891B07E328C60D6B = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "AppIcon-ImageGen.icns"; path = "Assets/AppIcon-ImageGen.icns"; sourceTree = "<group>"; };
+ 74C2431FE30C4A47C8443B80 = {isa = PBXBuildFile; fileRef = F8995BA5891B07E328C60D6B; };
+ 30B7F0B3256522F22FEA0AF7 = {isa = PBXBuildFile; fileRef = 8F16A10EACF83E2AF4C0A9EB; };
+ 8F16A10EACF83E2AF4C0A9EB = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AIClient.swift"; path = "Sources/InkDesk/AIClient.swift"; sourceTree = "<group>"; };
+ 3C93B1B010F8BD413A525A22 = {isa = PBXBuildFile; fileRef = A23C314E5796838945830B6F; };
+ A23C314E5796838945830B6F = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AppState.swift"; path = "Sources/InkDesk/AppState.swift"; sourceTree = "<group>"; };
+ A42D3290DB646C7C2A8266F0 = {isa = PBXBuildFile; fileRef = 2E5A0A49C211CDDA4F9C86B5; };
+ 2E5A0A49C211CDDA4F9C86B5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DeviceServer.swift"; path = "Sources/InkDesk/DeviceServer.swift"; sourceTree = "<group>"; };
+ 2081B155009D7B29E04C16F1 = {isa = PBXBuildFile; fileRef = 53D82B5F63811E844CEBD1E1; };
+ 53D82B5F63811E844CEBD1E1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EditorViews.swift"; path = "Sources/InkDesk/EditorViews.swift"; sourceTree = "<group>"; };
+ 16CA96D5852BC115BBCB9F49 = {isa = PBXBuildFile; fileRef = 28C13FE5BD59E983609DFB0D; };
+ 28C13FE5BD59E983609DFB0D = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "InkDeskApp.swift"; path = "Sources/InkDesk/InkDeskApp.swift"; sourceTree = "<group>"; };
+ 539E7C43B191C015904C6A0C = {isa = PBXBuildFile; fileRef = 69D9658C31C20A36F562710C; };
+ 69D9658C31C20A36F562710C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "KeychainStore.swift"; path = "Sources/InkDesk/KeychainStore.swift"; sourceTree = "<group>"; };
+ AD0364D5F65A1D94532D6A56 = {isa = PBXBuildFile; fileRef = D5A5DEFBD1C737421BA0D360; };
+ D5A5DEFBD1C737421BA0D360 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Models.swift"; path = "Sources/InkDesk/Models.swift"; sourceTree = "<group>"; };
+ 528E74BECC53635DFA374121 = {isa = PBXBuildFile; fileRef = 623FC227D86E969DC90870E4; };
+ 623FC227D86E969DC90870E4 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Panels.swift"; path = "Sources/InkDesk/Panels.swift"; sourceTree = "<group>"; };
+ 85DF3B5585CED66B60DE9186 = {isa = PBXBuildFile; fileRef = 2157DFDCEEDDD83919FE9712; };
+ 2157DFDCEEDDD83919FE9712 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ScreenRenderer.swift"; path = "Sources/InkDesk/ScreenRenderer.swift"; sourceTree = "<group>"; };
+ E8717E96B62EB3597A5AB15F = {isa = PBXBuildFile; fileRef = 23E904566ED7397CAF21FE82; };
+ 23E904566ED7397CAF21FE82 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "InkDeskTests.swift"; path = "Tests/InkDeskTests.swift"; sourceTree = "<group>"; };
+ E9F66EACA0220DF0EB19EED5 = {isa = PBXBuildFile; fileRef = 31EEF9AEC35626959D6BDD17; };
+ 31EEF9AEC35626959D6BDD17 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ServiceTests.swift"; path = "Tests/ServiceTests.swift"; sourceTree = "<group>"; };
+ 59BD0A3FF43B32849B319E64 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+ 7D1043473D55BFA90E8530D3 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InkDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+ DC76E9F0C0006E8F919E0C51 = {isa = PBXGroup; children = (F8995BA5891B07E328C60D6B, BCE16DD0260827ECF338C787, 04D13FD0AA6F0197CF2C9990, 59BD0A3FF43B32849B319E64, FBDC4F23F93125BBEEAE800C); sourceTree = "<group>"; };
+ BCE16DD0260827ECF338C787 = {isa = PBXGroup; name = Sources; children = (D5D03779A09D6291EF47B44D, 5C15E6AEA0777D94B3438B47, 8F16A10EACF83E2AF4C0A9EB, A23C314E5796838945830B6F, 2E5A0A49C211CDDA4F9C86B5, 53D82B5F63811E844CEBD1E1, 28C13FE5BD59E983609DFB0D, 69D9658C31C20A36F562710C, D5A5DEFBD1C737421BA0D360, 623FC227D86E969DC90870E4, 2157DFDCEEDDD83919FE9712); sourceTree = "<group>"; };
+ 04D13FD0AA6F0197CF2C9990 = {isa = PBXGroup; name = Checks; children = (23E904566ED7397CAF21FE82, 31EEF9AEC35626959D6BDD17); sourceTree = "<group>"; };
+ FBDC4F23F93125BBEEAE800C = {isa = PBXGroup; name = Products; children = (7D1043473D55BFA90E8530D3); sourceTree = "<group>"; };
+ 72A8017E75795FC05F78F54C = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (C6C667B348B2F5688E32B6D4, 06E6DA28868FD54563774088, 30B7F0B3256522F22FEA0AF7, 3C93B1B010F8BD413A525A22, A42D3290DB646C7C2A8266F0, 2081B155009D7B29E04C16F1, 16CA96D5852BC115BBCB9F49, 539E7C43B191C015904C6A0C, AD0364D5F65A1D94532D6A56, 528E74BECC53635DFA374121, 85DF3B5585CED66B60DE9186, E8717E96B62EB3597A5AB15F, E9F66EACA0220DF0EB19EED5); runOnlyForDeploymentPostprocessing = 0; };
+ 7561BFB015D8F536760CB671 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+ 0189424A5A60FED329FA868E = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (74C2431FE30C4A47C8443B80); runOnlyForDeploymentPostprocessing = 0; };
+ 0E8A3AD980EC179856012B7E = {isa = PBXNativeTarget; buildConfigurationList = 651ECA092BE81738918D8CDB; buildPhases = (72A8017E75795FC05F78F54C, 7561BFB015D8F536760CB671, 0189424A5A60FED329FA868E); buildRules = (); dependencies = (); name = InkDesk; productName = InkDesk; productReference = 7D1043473D55BFA90E8530D3; productType = "com.apple.product-type.application"; };
+ 98F54143AB4E86B28C3AFEE0 = {isa = PBXProject; attributes = {LastSwiftUpdateCheck = 1600; LastUpgradeCheck = 1600; }; buildConfigurationList = 657E660766014DDDC9673A14; compatibilityVersion = "Xcode 14.0"; developmentRegion = "zh-Hans"; hasScannedForEncodings = 0; knownRegions = ("zh-Hans", en, Base); mainGroup = DC76E9F0C0006E8F919E0C51; productRefGroup = FBDC4F23F93125BBEEAE800C; projectDirPath = ""; projectRoot = ""; targets = (0E8A3AD980EC179856012B7E); };
+ 89E1FD6268CC0F221A2BE178 = {isa = XCBuildConfiguration; name = Debug; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_VERSION = 5.0; CLANG_ENABLE_MODULES = YES; }; };
+ 7082CC0B6FC1282FCEABD07A = {isa = XCBuildConfiguration; name = Debug; buildSettings = {CODE_SIGN_STYLE = Automatic; CODE_SIGN_IDENTITY = "-"; COMBINE_HIDPI_IMAGES = YES; ENABLE_APP_SANDBOX = NO; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = Info.plist; MACOSX_DEPLOYMENT_TARGET = 14.0; PRODUCT_BUNDLE_IDENTIFIER = fan.api.InkDesk; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; }; };
+ E6DE6C99132752C914FEF632 = {isa = XCBuildConfiguration; name = Release; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_VERSION = 5.0; CLANG_ENABLE_MODULES = YES; }; };
+ 639A7CA24D39909E713B47F7 = {isa = XCBuildConfiguration; name = Release; buildSettings = {CODE_SIGN_STYLE = Automatic; CODE_SIGN_IDENTITY = "-"; COMBINE_HIDPI_IMAGES = YES; ENABLE_APP_SANDBOX = NO; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = Info.plist; MACOSX_DEPLOYMENT_TARGET = 14.0; PRODUCT_BUNDLE_IDENTIFIER = fan.api.InkDesk; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; SWIFT_OPTIMIZATION_LEVEL = "-O"; }; };
+ 657E660766014DDDC9673A14 = {isa = XCConfigurationList; buildConfigurations = (89E1FD6268CC0F221A2BE178, E6DE6C99132752C914FEF632); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+ 651ECA092BE81738918D8CDB = {isa = XCConfigurationList; buildConfigurations = (7082CC0B6FC1282FCEABD07A, 639A7CA24D39909E713B47F7); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+ };
+ rootObject = 98F54143AB4E86B28C3AFEE0;
+}

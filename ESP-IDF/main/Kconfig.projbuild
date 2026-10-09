@@ -1,0 +1,74 @@
+menu "InkDesk E1001"
+config INK_WIFI_SSID
+    string "2.4 GHz Wi-Fi SSID"
+    default ""
+config INK_WIFI_PASSWORD
+    string "Wi-Fi password"
+    default ""
+config INK_BASE_URL
+    string "Mac server origin (http://LAN-IP:port, no trailing slash)"
+    default "http://127.0.0.1:8765"
+    help
+        Replace the loopback placeholder with the Mac's actual LAN address.
+        The default InkDesk server port is 8765. Do not add a trailing slash.
+        On the ESP32, 127.0.0.1 refers to the device itself, not the Mac.
+config INK_DEVICE_TOKEN
+    string "InkDesk device token (not an AI API key)"
+    default ""
+config INK_POLL_SECONDS
+    int "Fallback polling seconds"
+    range 10 3600
+    default 30
+config INK_HTTP_TIMEOUT_MS
+    int "HTTP timeout (milliseconds)"
+    range 2000 30000
+    default 8000
+config INK_EPD_SCLK
+    int "Display SCLK GPIO (Seeed Setup520: 7)"
+    range 0 48
+    default 7
+config INK_EPD_MOSI
+    int "Display MOSI GPIO (Seeed Setup520: 9)"
+    range 0 48
+    default 9
+config INK_EPD_CS
+    int "Display CS GPIO (Seeed Setup520: 10)"
+    range 0 48
+    default 10
+config INK_EPD_DC
+    int "Display DC GPIO (Seeed Setup520: 11)"
+    range 0 48
+    default 11
+config INK_EPD_RST
+    int "Display RESET GPIO (Seeed Setup520: 12)"
+    range 0 48
+    default 12
+config INK_EPD_BUSY
+    int "Display BUSY GPIO (Seeed Setup520: 13)"
+    range 0 48
+    default 13
+config INK_EPD_BUSY_LEVEL
+    int "BUSY asserted level (Seeed CHECK_BUSY: 0)"
+    range 0 1
+    default 0
+config INK_EPD_SPI_HZ
+    int "Display SPI clock (Hz)"
+    range 100000 10000000
+    default 10000000
+config INK_EPD_BUSY_TIMEOUT_MS
+    int "Maximum display busy time (milliseconds)"
+    range 10000 90000
+    default 60000
+config INK_BUTTON_LEFT
+    int "Left button KEY2 GPIO (Seeed: 5)"
+    range 0 48
+    default 5
+config INK_BUTTON_MIDDLE
+    int "Middle button KEY1 GPIO (Seeed: 4)"
+    range 0 48
+    default 4
+config INK_BUTTON_RIGHT
+    int "Right green button KEY0 GPIO (Seeed: 3)"
+    range 0 48
+    default 3
+endmenu

@@ -1,0 +1,16 @@
+InkDesk logo generation
+
+Tool: built-in ImageGen.
+Design: e-paper white tile, three black widget blocks, white Todo check mark and warm amber accent. No wordmark.
+Final master: InkDesk-Logo.png. macOS icon: AppIcon-ImageGen.icns (16 through 1024 px).
+Original app icon retained as AppIcon.icns.
+
+Initial generation prompt
+
+Use case: logo-brand
+Asset type: production macOS app icon for InkDesk, an e-paper desktop dashboard designer with modular widgets, Todo and AI cards.
+Primary request: one polished original app icon, an elegant e-paper panel represented as a soft warm-white square tile with deeply rounded corners, containing a bold black modular ink mark. The mark is a simple asymmetrical arrangement of three generous widget blocks: a vertical rounded ink panel on the left and two smaller blocks on the right, with one unmistakable white check mark inset in the lower-right black block. Suggest quiet productivity and configurable ink-screen widgets. A very small warm amber accent on one module may add identity. Minimal, restrained, premium, tactile paper with extremely subtle embossing.
+Composition/framing: one centered icon only, straight-on, perfectly square canvas, tile occupies approximately 85% of the width, generous even transparent margin. Strong coherent silhouette, balanced at 16px and 32px. Flat graphic forms inside the tile, crisp edges, no fine UI details.
+Materials/textures: matte e-paper white and dense black ink, slight soft dimensionality and subtle shadow confined around tile.
+Text: none.
+Constraints: transparent background outside the rounded-square icon, no mockup, no device scene, no text or lettering, no watermark, no pencils, no brains, no circuit decorations, no Apple logo. Single final design.
