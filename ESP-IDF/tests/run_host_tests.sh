@@ -6,7 +6,7 @@ trap 'rm -rf "$test_dir"' EXIT HUP INT TERM
 cc -std=c11 -Wall -Wextra -Werror -Wno-deprecated-declarations -fsanitize=address,undefined -g \
   -I"$root/main" -I"$root/main/vendor" \
   "$root/main/protocol.c" "$root/main/sha256.c" "$root/main/vendor/cJSON.c" "$root/tests/protocol_test.c" \
-  -o "$test_dir/protocol_test"
+  -o "$test_dir/protocol_test" -lm
 "$test_dir/protocol_test"
 cc -shared -fPIC -std=c11 "$root/main/sha256.c" -o "$test_dir/libsha256.dylib"
 python3 - "$test_dir/libsha256.dylib" <<'PY'
