@@ -14,7 +14,6 @@ struct ScreenContent: View {
             Color.white
             ForEach(page.widgets) { widget in
                 WidgetContent(widget: widget, todos: todos, date: date, focusedTaskID: focusedTaskID)
-                    .frame(width: widget.width, height: widget.height)
                     .offset(x: widget.x, y: widget.y)
             }
         }
@@ -40,19 +39,46 @@ struct WidgetContent: View {
         return (index / rowLimit) * rowLimit
     }
     private var visibleTodos: [TodoItem] { Array(filtered.dropFirst(visibleStart).prefix(rowLimit)) }
+    private var titleFontSize: Double { max(13, widget.fontSize * 0.65) }
+    private var progressFontSize: Double { max(28, widget.fontSize * 1.6) }
+    private var titleLineHeight: Double { lineHeight(size: titleFontSize, weight: .semibold) }
+    private var progressLineHeight: Double { lineHeight(size: progressFontSize, weight: .medium) }
+    private var captionLineHeight: Double { lineHeight(size: 16) }
+    private func lineHeight(size: Double, weight: NSFont.Weight = .regular) -> Double {
+        let font = NSFont.systemFont(ofSize: size, weight: weight)
+        return ceil(Double(font.ascender - font.descender + font.leading))
+    }
+    private var contentScale: Double {
+        guard widget.kind == .progress else { return 1 }
+        let titleHeight = widget.title.isEmpty ? 0 : titleLineHeight + 10
+        let naturalHeight = widget.padding * 2 + titleHeight + progressLineHeight + 14 + captionLineHeight + 20
+        let total = filtered.count
+        let done = filtered.filter(\.completed).count
+        let countWidth = ("\(done) / \(total)" as NSString).size(withAttributes: [
+            .font: NSFont.monospacedDigitSystemFont(ofSize: progressFontSize, weight: .medium)
+        ]).width
+        let caption = total == 0 ? "添加任务后显示进度" : "已完成 \(Int(Double(done) / Double(total) * 100))%"
+        let captionWidth = (caption as NSString).size(withAttributes: [.font: NSFont.systemFont(ofSize: 16)]).width
+        let naturalWidth = widget.padding * 2 + Double(max(countWidth, captionWidth))
+        return min(1, widget.height / naturalHeight, widget.width / naturalWidth)
+    }
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 10 * contentScale) {
             if !widget.title.isEmpty {
-                Text(widget.title).font(.system(size: max(13, widget.fontSize * 0.65), weight: .semibold)).lineLimit(1)
+                Text(widget.title).font(.system(size: titleFontSize * contentScale, weight: .semibold)).lineLimit(1)
+                    .minimumScaleFactor(widget.kind == .progress ? 0.1 : 1)
+                    .frame(height: widget.kind == .progress ? titleLineHeight * contentScale : nil, alignment: .leading)
             }
             content
             Spacer(minLength: 0)
         }
-        .padding(widget.padding)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .padding(widget.padding * contentScale)
+        // Constrain the content before drawing and clipping so intrinsic text size
+        // cannot move the widget's border away from the editor's selection frame.
+        .frame(width: widget.width, height: widget.height, alignment: .topLeading)
         .foregroundColor(ink)
         .background(paper)
-        .overlay(Rectangle().stroke(ink, lineWidth: widget.border ? 1 : 0))
+        .overlay(Rectangle().strokeBorder(ink, lineWidth: widget.border ? 1 : 0))
         .clipped()
         .environment(\.colorScheme, .light)
     }
@@ -89,14 +115,18 @@ struct WidgetContent: View {
         case .progress:
             let total = filtered.count
             let done = filtered.filter(\.completed).count
-            Text("\(done) / \(total)").font(.system(size: max(28, widget.fontSize * 1.6), weight: .medium)).monospacedDigit()
+            Text("\(done) / \(total)").font(.system(size: progressFontSize * contentScale, weight: .medium)).monospacedDigit()
+                .lineLimit(1).minimumScaleFactor(0.1)
+                .frame(height: progressLineHeight * contentScale, alignment: .leading)
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
-                    Rectangle().stroke(ink, lineWidth: 1)
                     Rectangle().fill(ink).frame(width: geometry.size.width * (total == 0 ? 0 : Double(done) / Double(total)))
+                    Rectangle().strokeBorder(ink, lineWidth: 1)
                 }
-            }.frame(height: 14)
-            Text(total == 0 ? "添加任务后显示进度" : "已完成 \(Int(Double(done) / Double(total) * 100))%").font(.system(size: 16))
+            }.frame(height: 14 * contentScale)
+            Text(total == 0 ? "添加任务后显示进度" : "已完成 \(Int(Double(done) / Double(total) * 100))%")
+                .font(.system(size: 16 * contentScale)).lineLimit(1).minimumScaleFactor(0.1)
+                .frame(height: captionLineHeight * contentScale, alignment: .leading)
         case .image:
             if let data = widget.imageData, let image = NSImage(data: data) {
                 Image(nsImage: image).resizable().aspectRatio(contentMode: .fit).frame(maxWidth: .infinity, maxHeight: .infinity)

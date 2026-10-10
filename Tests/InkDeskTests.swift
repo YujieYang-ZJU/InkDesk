@@ -9,6 +9,7 @@ private func require(_ condition: @autoclosure () -> Bool, _ message: String) th
 @MainActor func runInkDeskTests() async throws {
     try await runServiceTests()
     try testClockPublishingBoundary()
+    try testResizedWidgetRendering()
     let path = FileManager.default.temporaryDirectory.appendingPathComponent("inkdesk-check-\(UUID().uuidString)", isDirectory: true)
     defer { try? FileManager.default.removeItem(at: path) }
     let store = AppState(dataDirectory: path, loadKey: false)
@@ -81,6 +82,38 @@ private func require(_ condition: @autoclosure () -> Bool, _ message: String) th
     let checkFile = path.appendingPathComponent("verified-screen.png")
     try rendered.pngData.write(to: checkFile)
     print("Layout, undo/redo, persistence and recovery, frame packing, task focus, immutable sync queue, leases, ACKs, restart recovery, edit merging and action rollback: passed")
+}
+
+@MainActor private func testResizedWidgetRendering() throws {
+    let todos = (0..<11).map { TodoItem(title: "任务 \($0)", completed: $0 < 4) }
+    var widget = InkWidget(kind: .progress, title: "任务进度", x: 40, y: 80,
+                           width: 220, height: 100, fontSize: 26)
+    let sizes: [(Double, Double, Double, Double)] = [
+        (220, 100, 16, 26), (80, 60, 16, 26), (80, 60, 48, 26),
+        (300, 180, 16, 26), (80, 180, 48, 26), (80, 60, 48, 72)
+    ]
+    for (width, height, padding, fontSize) in sizes {
+        widget.width = width; widget.height = height; widget.padding = padding
+        widget.fontSize = fontSize
+        let frame = try FrameRenderer.render(page: InkPage(name: "缩放回归", widgets: [widget]),
+                                             todos: todos, configuration: DeviceConfiguration(), revision: 1)
+        var inkRows = [Int]()
+        for y in 0..<480 {
+            var hasContent = false
+            for x in 0..<800 {
+                let index = y * 800 + x
+                let isInk = frame.bitmapData[index / 8] & (1 << (7 - index % 8)) == 0
+                guard isInk else { continue }
+                try require(x >= Int(widget.x) && x < Int(widget.x + width) &&
+                            y >= Int(widget.y) && y < Int(widget.y + height), "缩小任务进度后内容或边框超出组件范围")
+                if x > Int(widget.x) + 1 && x < Int(widget.x + width) - 2 &&
+                    y > Int(widget.y) + 1 && y < Int(widget.y + height) - 2 { hasContent = true }
+            }
+            if hasContent { inkRows.append(y) }
+        }
+        let bands = inkRows.enumerated().filter { index, row in index == 0 || row > inkRows[index - 1] + 1 }.count
+        try require(bands == 4, "缩小任务进度后标题、数量、进度条或百分比被裁切或重叠")
+    }
 }
 
 @MainActor private func testClockPublishingBoundary() throws {
